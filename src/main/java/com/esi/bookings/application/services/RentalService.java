@@ -60,7 +60,11 @@ public class RentalService {
 
         Property property = propertyRepository.findPropertyById(dto.getPropertyId());
 
-        User guest = userRepository.getOne(dto.getUserId());
+        if (property.isFree() == false){
+            throw new Exception("Can't book");
+        }
+
+        User guest = userRepository.findBy_id(dto.getUserId());
 
         Rental rental = Rental.of(
                 identifierFactory.nextID(),
@@ -87,6 +91,39 @@ public class RentalService {
 
         propertyRegularRepository.save(property);
         userRepository.save(guest);
+        return rentalRepository.save(rental);
+    }
+
+    public Rental cancel(String id) throws Exception{
+        Rental rental = rentalRepository.findBy_id(id);
+
+        if (LocalDate.now().compareTo(rental.getRentalPeriod().getStartDate().minusWeeks(1)) <= 0){
+            rental.changeStatus(RentalStatus.CANCELLED);
+            rental.getProperty().setFree(true);
+
+            Float fraction = rental.getProperty().getPrice() / 2;
+            rental.getUser().changeBitcoins(fraction);
+            rental.getProperty().getOwner().changeBitcoins(-fraction);
+
+        }
+        else{
+            throw new Exception("Less than seven days");
+        }
+
+        return rentalRepository.save(rental);
+    }
+
+    public Rental close(String id) throws Exception{
+        Rental rental = rentalRepository.findBy_id(id);
+
+        if (rental.getStatus() == RentalStatus.ACCEPTED){
+            rental.changeStatus(RentalStatus.CLOSED);
+            rental.getProperty().setFree(true);
+        }
+        else{
+            throw new Exception("Invalid");
+        }
+
         return rentalRepository.save(rental);
     }
 }

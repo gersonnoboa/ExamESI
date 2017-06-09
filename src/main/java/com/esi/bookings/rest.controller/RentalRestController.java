@@ -1,5 +1,6 @@
 package com.esi.bookings.rest.controller;
 
+import com.esi.bookings.application.dto.BookingAlteringDTO;
 import com.esi.bookings.application.dto.BookingCreationDTO;
 import com.esi.bookings.application.dto.PropertyDTO;
 import com.esi.bookings.application.services.RentalService;
@@ -42,4 +43,15 @@ public class RentalRestController {
     public Rental submitBookingRequest(@RequestBody Optional<BookingCreationDTO> dto) throws Exception{
         return rentalService.submitBookingRequest(dto.get());
     }
+
+    @PatchMapping("/properties")
+    public Rental cancelBookingRequest(@RequestBody Optional<BookingAlteringDTO> dto) throws Exception{
+        return rentalService.cancel(dto.get().getId());
+    }
+
+    @DeleteMapping("/properties")
+    public Rental closeBookingRequest(@RequestBody Optional<BookingAlteringDTO> dto) throws Exception{
+        return rentalService.close(dto.get().getId());
+    }
+
 }

@@ -18,7 +18,7 @@ public class PropertyRepositoryImpl implements CustomPropertyRepository {
     @Override
     public List<Property> findAvailableProps(String city, LocalDate startDate, LocalDate endDate) {
 
-        List<Property> properties = em.createQuery("select distinct p FROM Property p WHERE (p.city) LIKE ?1 AND p.free = true AND p.id not in (select r.property.id from Rental r where r.rentalPeriod.startDate < ?3 and r.rentalPeriod.endDate > ?2)")
+        List<Property> properties = em.createQuery("select distinct p FROM Property p WHERE (p.city) LIKE ?1 AND p.free = true AND p.id not in (select r.property.id from Rental r where r.rentalPeriod.startDate < ?3 and r.rentalPeriod.endDate > ?2 AND r.status <> 'CLOSED')")
                 .setParameter(1, "%" + city + "%")
                 .setParameter(2, startDate)
                 .setParameter(3, endDate)
