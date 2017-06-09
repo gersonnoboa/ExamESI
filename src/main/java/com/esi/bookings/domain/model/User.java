@@ -8,6 +8,8 @@ import org.springframework.hateoas.ResourceSupport;
 import sun.misc.Resource;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 /**
@@ -26,4 +28,7 @@ public class User extends ResourceSupport{
     String name;
 
     int bitcoins;
+
+    @Enumerated(EnumType.STRING)
+    UserRole userRole;
 }

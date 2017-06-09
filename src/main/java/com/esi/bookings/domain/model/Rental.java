@@ -20,7 +20,7 @@ import javax.persistence.*;
 public class Rental extends ResourceSupport{
 
     @Id
-    String rental;
+    String _id;
 
     @ManyToOne
     User user;
@@ -30,5 +30,8 @@ public class Rental extends ResourceSupport{
 
     @Embedded
     RentalPeriod rentalPeriod;
+
+    @Enumerated(EnumType.STRING)
+    RentalStatus status;
 
 }

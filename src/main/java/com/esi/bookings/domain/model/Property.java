@@ -8,6 +8,8 @@ import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.math.BigDecimal;
 
 /**
@@ -24,7 +26,7 @@ public class Property extends ResourceSupport {
 
     String city;
 
-    BigDecimal price;
+    int price;
 
     String address;
 
@@ -41,5 +43,8 @@ public class Property extends ResourceSupport {
     boolean hasInternetAccess;
 
     boolean hasAirConditioning;
+
+    @ManyToOne
+    User owner;
 
 }
