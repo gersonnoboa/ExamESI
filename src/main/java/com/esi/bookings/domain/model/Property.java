@@ -26,7 +26,7 @@ public class Property{
 
     String city;
 
-    int price;
+    Float price;
 
     String address;
 
@@ -44,7 +44,13 @@ public class Property{
 
     boolean hasAirConditioning;
 
+    boolean free;
+
     @ManyToOne
     User owner;
+
+    public void setFree(boolean isFree){
+        free = isFree;
+    }
 
 }

@@ -11,6 +11,6 @@ import java.util.List;
  */
 public interface CustomPropertyRepository {
 
-    List<PropertyDTO> findAvailableProps(String city, LocalDate startDate, LocalDate endDate);
-    PropertyDTO findPropertyById(String id) throws Exception;
+    List<Property> findAvailableProps(String city, LocalDate startDate, LocalDate endDate);
+    Property findPropertyById(String id) throws Exception;
 }

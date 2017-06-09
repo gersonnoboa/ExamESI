@@ -1,8 +1,9 @@
 package com.esi.bookings.application.dto;
 
+import com.esi.common.rest.ResourceSupport;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.hateoas.ResourceSupport;
+
 import sun.misc.Resource;
 
 import java.math.BigDecimal;
@@ -11,15 +12,18 @@ import java.math.BigDecimal;
  * Created by gerson on 09/06/17.
  */
 @Data
-@AllArgsConstructor(staticName = "of")
-public class PropertyDTO extends ResourceSupport{
+//@AllArgsConstructor(staticName = "of")
+public class PropertyDTO extends ResourceSupport {
+
     String _id;
 
     String city;
 
-    int price;
+    Float price;
 
     String address;
+
+    boolean free;
 
     /*Float area;
 

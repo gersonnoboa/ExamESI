@@ -27,8 +27,12 @@ public class User{
 
     String name;
 
-    int bitcoins;
+    Float bitcoins;
 
     @Enumerated(EnumType.STRING)
     UserRole userRole;
+
+    public void changeBitcoins(Float change){
+        bitcoins = bitcoins - change;
+    }
 }

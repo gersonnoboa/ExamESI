@@ -22,7 +22,13 @@ public class PropertyAssembler extends ResourceAssemblerSupport<Property, Proper
 
     @Override
     public PropertyDTO toResource(Property property){
-        PropertyDTO dto = PropertyDTO.of(property.get_id(), property.getCity(), property.getPrice(), property.getAddress());
+        PropertyDTO dto = createResourceWithId(property.get_id(), property);
+        dto.set_id(property.get_id());
+        dto.setCity(property.getCity());
+        dto.setPrice(property.getPrice());
+        dto.setAddress(property.getAddress());
+        dto.setFree(property.isFree());
+        //PropertyDTO dto = PropertyDTO.of(, property.getCity(), property.getPrice(), property.getAddress());
 
         try {
             dto.add(new ExtendedLink(linkTo(methodOn(RentalRestController.class).findProperty(dto.get_id())).toString(),

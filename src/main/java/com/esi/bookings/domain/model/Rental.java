@@ -34,4 +34,7 @@ public class Rental{
     @Enumerated(EnumType.STRING)
     RentalStatus status;
 
+    public void changeStatus(RentalStatus newStatus){
+        status = newStatus;
+    }
 }
