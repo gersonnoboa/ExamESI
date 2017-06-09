@@ -1,6 +1,7 @@
 package com.esi.bookings.domain.repository;
 
 import com.esi.bookings.application.dto.PropertyDTO;
+import com.esi.bookings.domain.model.Property;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,4 +12,5 @@ import java.util.List;
 public interface CustomPropertyRepository {
 
     List<PropertyDTO> findAvailableProps(String city, LocalDate startDate, LocalDate endDate);
+    PropertyDTO findPropertyById(String id) throws Exception;
 }

@@ -1,10 +1,10 @@
 package com.esi.bookings.domain.model;
 
+import com.esi.common.rest.ResourceSupport;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.hateoas.ResourceSupport;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 @Getter
 @NoArgsConstructor(force=true, access= AccessLevel.PRIVATE)
 @AllArgsConstructor(staticName = "of")
-public class Property extends ResourceSupport {
+public class Property{
     @Id
     String _id;
 

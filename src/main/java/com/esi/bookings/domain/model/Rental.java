@@ -5,7 +5,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.hateoas.ResourceSupport;
+import com.esi.common.rest.ResourceSupport;
 
 import javax.persistence.*;
 
@@ -17,7 +17,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(force=true, access= AccessLevel.PRIVATE)
 @AllArgsConstructor(staticName = "of")
-public class Rental extends ResourceSupport{
+public class Rental{
 
     @Id
     String _id;

@@ -17,7 +17,7 @@ public class PropertyDTO extends ResourceSupport{
 
     String city;
 
-    BigDecimal price;
+    int price;
 
     String address;
 
